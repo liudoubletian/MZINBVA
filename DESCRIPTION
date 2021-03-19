@@ -1,0 +1,25 @@
+Package: ZIVA.NB
+Title: A variational approach for zero-inflated multilevel model in microbiome data
+Version: 0.1
+Authors@R: 
+    person(given = "Tiantian",
+           family = "liu",
+           role = c("aut", "cre"),
+           email = "liu_double_tian@sjtu.edu.cn",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: A variational approach for zero-inflated multilevel model in microbiome data
+License: GPL (>= 2)
+Depends: R (>= 2.10)
+Imports: 
+    foreach, 
+    Matrix,
+    MASS,
+    stats, 
+    doParallel
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
