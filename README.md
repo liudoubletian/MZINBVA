@@ -34,16 +34,10 @@ data <- c(sim_dat, list(Y=Y_mat[,1]))
 est_m <- step_alg(data).  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
 ```
-* `data` : a list including covariates and initial parameters
-* `est_m` : a phylogenetic tree among m taxa
-* `group` : a n-vector of group indicators
-* `test.method` : t-test or Wilcoxon rank sum test
-* `cutf` : level of significance
-* `adj.m` : the adjustment methods for p-values
+* `data` : a list including observed microbiome data and covariates
+* `est_m` : a list of the estimated model parameters and variational parameters
+* `nodes` : the required nodes for the parallel 
 
-it returns a list of results:  
-* `final.p` : the adjusted p values 
-* `dif.otus` : the set of differentially abundant OTUs  
 # Example
 ## simulation from DM
 The following function shows how to simulate data from a Dirichlet-multinomial distribution.  
