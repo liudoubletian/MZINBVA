@@ -28,7 +28,11 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ## differential abundance testing for each taxa
 ```r
-eBay_tree(otu.data=tree_table,tree=tree,group=group,test.method="t",cutf=0.05,adj.m="BH")
+' Y_mat <- sim_dat$Y_mat
+' sim_dat["Y_mat"] <- NULL
+' data <- c(sim_dat, list(Y=Y_mat[,1]))
+' est_m <- step_alg(data).  ###parameter estimation
+
 ```
 * `otu.data` : an OTU table with n rows (samples) and m columns (taxa)
 * `tree` : a phylogenetic tree among m taxa
