@@ -28,14 +28,14 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ## differential abundance testing for each taxa
 ```r
-' Y_mat <- sim_dat$Y_mat
-' sim_dat["Y_mat"] <- NULL
-' data <- c(sim_dat, list(Y=Y_mat[,1]))
-' est_m <- step_alg(data).  ###parameter estimation
-
+Y_mat <- sim_dat$Y_mat
+sim_dat["Y_mat"] <- NULL
+data <- c(sim_dat, list(Y=Y_mat[,1]))
+est_m <- step_alg(data).  ###parameter estimation
+res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
 ```
-* `otu.data` : an OTU table with n rows (samples) and m columns (taxa)
-* `tree` : a phylogenetic tree among m taxa
+* `data` : a list including covariates and initial parameters
+* `est_m` : a phylogenetic tree among m taxa
 * `group` : a n-vector of group indicators
 * `test.method` : t-test or Wilcoxon rank sum test
 * `cutf` : level of significance
