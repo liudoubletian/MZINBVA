@@ -12,17 +12,21 @@ library(MZIVA)
 # Basic Usage
 ## simulate multilevel data
 ```r
-eBay(otu.data=ntree_table, group=group, test.method="t", cutf=0.05,adj.m="BH")
+sub.n <- 10
+pos.n <- 3
+vis.n <- 3
+otu.n <- 100
+sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 ```
-* `otu.data` : an OTU table with n rows (samples) and m columns (taxa)
-* `group` : a n-vector of group indicators
-* `test.method` : t-test or Wilcoxon rank sum test
-* `cutf` : level of significance
-* `adj.m` : the adjustment methods for p-values
+* `sub.n` : the number of subjects
+* `pos.n` : the number of positions for each subject
+* `vis.n` : the visit times for each subject
+* `otu.n` : the number of OTUs
+
 
  
 
-## phylogeny-aware empirical Bayes normalization
+## differential abundance testing for each taxa
 ```r
 eBay_tree(otu.data=tree_table,tree=tree,group=group,test.method="t",cutf=0.05,adj.m="BH")
 ```
