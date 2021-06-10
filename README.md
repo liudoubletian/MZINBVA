@@ -6,8 +6,8 @@ The microbiome data including some prominent attributes : sparsity and hierarchi
 # Installation
 ```r
 install.packages("devtools")  
-devtools::install_github("liudoubletian/MZIVA")  
-library(MZIVA)  
+devtools::install_github("liudoubletian/MZINBVA")  
+library(MZINBVA)  
 ```
 # Basic Usage
 ## simulate multilevel data
