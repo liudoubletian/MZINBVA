@@ -1,4 +1,4 @@
-# MZIVA (Multilevel zero-inflated model in mricrobiome data : A variational approximation approach)
+# MZINBVA: Variational approximation for multilevel zero-inflated negative binomial models for association analysis in microbiome surveys
 
 # Introduction
 The microbiome data including some prominent attributes : sparsity and hierarchical structure introduced by study design. In order to deal with these features, we introduced a new framework based on variational approximation. 
