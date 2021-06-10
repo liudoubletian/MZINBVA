@@ -32,7 +32,6 @@ res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance st
 * `nodes` : the required nodes for the parallel 
 
 # Example
-## simulation from DM
 The following function shows how to simulate a multilevel data.  
 ```r
 sub.n <- 10
