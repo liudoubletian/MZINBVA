@@ -42,7 +42,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
 
-Run the step_alg and data.pro function to test a taxa and return a p-value.
+Run the step_alg and data.pro function to test a taxon and return a p-value.
 
 ```r
 Y_mat <- sim_dat$Y_mat
