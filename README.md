@@ -22,7 +22,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
  
 
-## differential abundance testing for each taxa
+## differential abundance testing for each taxon
 ```r
 est_m <- step_alg(data).  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
