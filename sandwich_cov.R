@@ -51,6 +51,10 @@ total_elbo_split <- function(beta,data,gamma,phi,psib,psig,lamdab,lamdah,lamdad,
   C1=(exp(-x2%*%beta-new.mubi+new.sigmabi^2/2-new.muhij+new.sigmahij^2/2))
   F1=(exp(x1%*%gamma+new.mudi+(new.sigmadi^2)/2+new.mufij+(new.sigmafij^2)/2))
   
+  eq11=-x1%*%gamma-new.mudi-new.mufij
+  D1=-phi*log(1+B1/phi)
+  pijk[Y==0]=(1/(1+exp(eq11+D1)))[Y==0]
+  
   ini1=sum(pijk*eq1-log(1+F1))
   
   ini2=(1-pijk)*(lfactorial(Y+phi-1)-lfactorial(Y)-log(gamma(phi))-(Y+phi)*log(1+phi*C1)+
