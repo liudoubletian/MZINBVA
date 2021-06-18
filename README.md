@@ -1,4 +1,4 @@
-# MZINBVA: Variational approximation for multilevel zero-inflated negative binomial models for association analysis in microbiome surveys
+# MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys
 
 # Introduction
 The microbiome data including some prominent attributes : sparsity and hierarchical structure introduced by study design. In order to deal with these features, we introduced a new framework based on variational approximation. 
@@ -52,7 +52,7 @@ est_m <- step_alg(data)  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
 ```
 
-[1] Tiantian Liu, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative binomial models for association analysis in microbiome surveys.
+[1] Tiantian Liu, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
 
 
 
