@@ -48,7 +48,7 @@ Run the step_alg and data.pro function to test a taxon and return a p-value.
 Y_mat <- sim_dat$Y_mat
 sim_dat["Y_mat"] <- NULL
 data <- c(sim_dat, list(Y=Y_mat[,1]))
-est_m <- step_alg(data).  ###parameter estimation
+est_m <- step_alg(data)  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
 ```
 
