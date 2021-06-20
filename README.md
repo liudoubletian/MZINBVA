@@ -4,7 +4,7 @@
 The microbiome count data are over-dispersed with excess zeros. In addition, the observations from repeated measures are correlated. In order to address these challenges, we propose an effective variational approximation method, MZINBVA, for fitting zero-inflated negative-binomial models for multilevel data and apply it to association analysis or differential abundance testing.
 
 # Installation
-You can install our MZIBVA package from Github
+You can install our MZINBVA package from Github
 ```r
 install.packages("devtools")  
 devtools::install_github("liudoubletian/MZINBVA")  
