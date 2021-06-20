@@ -22,7 +22,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ## Parameter estimation
 ```r
-est_m <- step_alg(data).  ###parameter estimation
+est_m <- step_alg(data)
 ```
 ## Association analysis or differential abundance testing for each taxon
 ```r
@@ -49,8 +49,8 @@ Next, we illustrate the association analysis or differential abundance testing p
 Y_mat <- sim_dat$Y_mat
 sim_dat["Y_mat"] <- NULL
 data <- c(sim_dat, list(Y=Y_mat[,1]))
-est_m <- step_alg(data)  ###parameter estimation
-res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
+est_m <- step_alg(data)  
+res.t <- data.pro(est_m,nodes=3)
 ```
 
 [1] Tiantian Liu, Peirong Xu, Yueyao Du, Hui Lu, Hongyu Zhao, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
