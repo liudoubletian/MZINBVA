@@ -28,8 +28,8 @@ est_m <- step_alg(data)
 ```r
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a variational sandwich covariance matrix
 ```
-* `data` : a list including observed microbiome data and covariates
-* `est_m` : a list of the estimated model parameters and variational parameters
+* `data` : a data frame that includs observed microbiome count data and covariates
+* `est_m` : a list of estimated model parameters and variational parameters
 * `nodes` : the required nodes for the parallel 
 
 # Example
@@ -40,7 +40,6 @@ pos.n <- 3
 vis.n <- 3
 otu.n <- 100
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
-
 ```
 Next, we illustrate the association analysis or differential abundance testing procedure based on the example data
 ```r
