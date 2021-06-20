@@ -33,7 +33,7 @@ res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance st
 * `nodes` : the required nodes for the parallel 
 
 # Example
-The following function shows how to simulate a multilevel data.  
+The following step shows that how to generate multilevel microbiome count data.  
 ```r
 sub.n <- 10
 pos.n <- 3
@@ -43,7 +43,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
 
-Run the step_alg and data.pro function to test a taxon and return a p-value.
+Run the $step_alg$ and data.pro function to test a taxon and return a p-value.
 
 ```r
 Y_mat <- sim_dat$Y_mat
