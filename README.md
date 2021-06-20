@@ -1,6 +1,6 @@
 # MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys
 
-# Introduction
+# Description
 The microbiome count data are over-dispersed with excess zeros. In addition, the observations from repeated measures are correlated. In order to address these challenges, we propose an effective variational approximation method, MZINBVA, for fitting zero-inflated negative-binomial models for multilevel data and apply it to association analysis or differential abundance testing.
 
 # Installation
