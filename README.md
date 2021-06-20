@@ -43,7 +43,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
 
-Run the *step_alg* and *data.pro* function to conduct association analysis for a taxon and return a p-value.
+Run the *step_alg* and *data.pro* function to conduct association analysis for a taxon and it returns a p-value.
 
 ```r
 Y_mat <- sim_dat$Y_mat
