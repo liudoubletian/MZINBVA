@@ -4,13 +4,14 @@
 The microbiome data are over-dispersed with excess zeros. In addition, the observations from repeated measures in longitudinal studies are correlated. In order to address these challenges, we propose an effective variational approximation algorithm for fitting zero-inflated negative-binomial models for multilevel data and apply it to association analysis or differential abundance testing.
 
 # Installation
+You can install our MZINBVA package from Github
 ```r
 install.packages("devtools")  
 devtools::install_github("liudoubletian/MZINBVA")  
 library(MZINBVA)  
 ```
 # Basic Usage
-## simulate multilevel data
+## Data generation from three-level zero-inflated negative-binomial (ZINB) model
 ```r
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 ```
@@ -18,14 +19,14 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 * `pos.n` : the number of positions for each subject
 * `vis.n` : the visit times for each subject
 * `otu.n` : the number of OTUs
-
-
- 
-
-## differential abundance testing for each taxon
+## Parameter estimation
 ```r
-est_m <- step_alg(data).  ###parameter estimation
-res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
+est_m <- step_alg(data) 
+```
+
+## Association analysis or differential abundance testing for each taxon
+```r
+res.t <- data.pro(est_m,nodes=3) ### Wald test based on a variational sandwich covariance matrix
 ```
 * `data` : a list including observed microbiome data and covariates
 * `est_m` : a list of the estimated model parameters and variational parameters
@@ -41,7 +42,7 @@ otu.n <- 100
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
-
+Next, we illustrate the differential abundance testing procedure based on the example data
 Run the step_alg and data.pro function to test a taxon and return a p-value.
 
 ```r
@@ -53,6 +54,5 @@ res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance st
 ```
 
 [1] Tiantian Liu, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
-
 
 
