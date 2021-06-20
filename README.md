@@ -33,7 +33,7 @@ res.t <- data.pro(est_m,nodes=3) ### Wald test based on a variational sandwich c
 * `nodes` : the required nodes for the parallel 
 
 # Example
-The following function shows how to simulate a multilevel data.  
+The following function shows that how to simulate a multilevel microbiome count data 
 ```r
 sub.n <- 10
 pos.n <- 3
@@ -42,17 +42,19 @@ otu.n <- 100
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
-Next, we illustrate the differential abundance testing procedure based on the example data
-Run the step_alg and data.pro function to test a taxon and return a p-value.
-
+Next, we illustrate the association analysis or differential abundance testing procedure based on the example data
 ```r
+sub.n <- 10
+pos.n <- 3
+vis.n <- 3
+otu.n <- 100
+sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 Y_mat <- sim_dat$Y_mat
-sim_dat["Y_mat"] <- NULL
-data <- c(sim_dat, list(Y=Y_mat[,1]))
-est_m <- step_alg(data).  ###parameter estimation
-res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
+data <- data.frame(Y=Y_mat[,1],ID=sim_dat$ID,cluster=sim_dat$cluster,x1=sim_dat$x1,x2=sim_dat$x2)
+est_m <- step_alg(data)
+res.t <- data.pro(est_m,nodes=3)
 ```
 
-[1] Tiantian Liu, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
+[1] Tiantian Liu, Peirong Xu, Yueyao Du, Hui Lu, Hongyu Zhao, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
 
 
