@@ -47,9 +47,8 @@ Next, we illustrate the association analysis or differential abundance testing p
 
 ```r
 Y_mat <- sim_dat$Y_mat
-sim_dat["Y_mat"] <- NULL
-data <- c(sim_dat, list(Y=Y_mat[,1]))
-est_m <- step_alg(data)  
+data <- data.frame(Y=Y_mat[,1],ID=sim_dat$ID,cluster=sim_dat$cluster,x1=sim_dat$x1,x2=sim_dat$x2)
+est_m <- step_alg(data)
 res.t <- data.pro(est_m,nodes=3)
 ```
 
