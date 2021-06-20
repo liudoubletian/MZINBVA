@@ -24,7 +24,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 ```r
 est_m <- step_alg(data).  ###parameter estimation
 ```
-## Association analysis/differential abundance testing for each taxon
+## Association analysis or differential abundance testing for each taxon
 ```r
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a variational sandwich covariance matrix
 ```
@@ -43,7 +43,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
 ```
 
-Run the *step_alg* and *data.pro* functions to conduct association analysis for each taxon and it returns a p-value.
+Next, we illustrate the association analysis or differential abundance testing procedure based on the example data
 
 ```r
 Y_mat <- sim_dat$Y_mat
