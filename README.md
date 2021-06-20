@@ -11,7 +11,7 @@ devtools::install_github("liudoubletian/MZINBVA")
 library(MZINBVA)  
 ```
 # Basic Usage
-## simulate multilevel data
+## simulated data generated from three-level zero-inflated negative-binomial model
 ```r
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 ```
@@ -23,7 +23,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 
  
 
-## differential abundance testing for each taxon
+## association analysis/differential abundance testing for each taxon
 ```r
 est_m <- step_alg(data).  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
