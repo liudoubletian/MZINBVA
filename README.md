@@ -53,7 +53,7 @@ est_m <- step_alg(data)  ###parameter estimation
 res.t <- data.pro(est_m,nodes=3) ### Wald test based on a sandwich covariance structure
 ```
 
-[1] Tiantian Liu, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
+[1] Tiantian Liu, Peirong Xu, Yueyao Du, Hui Lu, Hongyu Zhao, Tao Wang. (2021) MZINBVA: Variational approximation for multilevel zero-inflated negative-binomial models for association analysis in microbiome surveys.
 
 
 
