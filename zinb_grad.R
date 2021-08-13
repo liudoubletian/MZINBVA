@@ -1,4 +1,4 @@
-grad_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -38,7 +38,7 @@ grad_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,m
   return(-c(final_beta))
 }
 
-grad_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -79,7 +79,7 @@ grad_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   return(-c(final_gamma))
 }
 
-grad_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -118,7 +118,7 @@ grad_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,mu
   return(-c(final_beta))
 }
 
-elbo_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+elbo_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -152,7 +152,7 @@ elbo_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,m
   return(-elbo)
 }
 
-elbo_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+elbo_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -183,7 +183,7 @@ elbo_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   elbo=ini1
   return(-elbo)
 }
-elbo_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+elbo_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -222,7 +222,7 @@ elbo_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,mu
 
 
 
-total_elbo=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_elbo=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -264,7 +264,7 @@ total_elbo=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   return(elbo)
   
 }
-total_elbo_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_elbo_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -311,7 +311,7 @@ total_elbo_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
 
 
 
-total_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -346,7 +346,7 @@ total_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   
 }
 
-total_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -383,7 +383,7 @@ total_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,
   
 }
 
-total_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -418,7 +418,7 @@ total_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   
 }
 
-total_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -454,7 +454,7 @@ total_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gam
   
 }
 
-grad_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -494,7 +494,7 @@ grad_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mu
   return(c(-ini3))
 }
 
-grad_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -535,7 +535,7 @@ grad_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
 }
 
 
-grad_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -574,7 +574,7 @@ grad_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma
   
 }
 
-grad_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -615,7 +615,7 @@ grad_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   return(c(-ini3))
 }
 
-total_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -650,7 +650,7 @@ total_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   
 }
 
-total_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -685,7 +685,7 @@ total_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,
   
 }
 
-total_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -720,7 +720,7 @@ total_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   
 }
 
-total_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+total_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -755,7 +755,7 @@ total_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gam
   
 }
 
-grad_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -791,7 +791,7 @@ grad_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mu
   return(c(-ini3))
 }
 
-grad_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -830,7 +830,7 @@ grad_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
 }
 
 
-grad_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
@@ -868,7 +868,7 @@ grad_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma
   
 }
 
-grad_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k){
+grad_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,muhij,mudi,mufij,sigmabi,sigmahij,sigmadi,sigmafij,pijk,num_l,num_k,num_p,l,k,offset){
   new.beta=beta
   new.gamma=gamma
   new.mubi=mubi
