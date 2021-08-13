@@ -29,6 +29,7 @@ step_alg=function(data,trace=FALSE){
   x2 <- as.matrix(data.frame(1,data$x2))
   ID <- data$ID
   cluster  <- data$cluster
+  offset <- data$offset
   l <- ncol(x1)
   k <- ncol(x2)
 ########### construct w and v matrix###
@@ -96,7 +97,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,muhij=new.muhij,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -117,7 +118,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -138,7 +139,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,mudi=new.mudi,
                    muhij=new.muhij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -160,7 +161,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,
-                   sigmadi=new.sigmadi,
+                   sigmadi=new.sigmadi,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -185,7 +186,7 @@ step_alg=function(data,trace=FALSE){
       q=try(nlminb(start =as.vector(gamma), elbo_gamma , gradient = grad_gamma,lower = rep(-Inf,k), upper = rep(Inf,k),
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
-                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,
+                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,offset=offset,
                    sigmadi=new.sigmadi,sigmafij=new.sigmafij,num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -212,7 +213,7 @@ step_alg=function(data,trace=FALSE){
       p.iter <- p.iter+1
     }
     
-    B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+    B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
     eq1=-x1%*%new.gamma-w%*%new.mudi-v%*%new.mufij
     D1=-new.phi*log(1+B1/new.phi)
     
@@ -232,7 +233,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,muhij=new.muhij,mudi=new.mudi,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -252,7 +253,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
                    mufij=new.mufij,sigmahij=new.sigmahij,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -272,7 +273,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,mudi=new.mudi,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -296,7 +297,7 @@ step_alg=function(data,trace=FALSE){
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
                    mufij=new.mufij,sigmabi=new.sigmabi,sigmadi=new.sigmadi,
-                   sigmafij=new.sigmafij,
+                   sigmafij=new.sigmafij,offset=offset,
                    num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -324,7 +325,7 @@ step_alg=function(data,trace=FALSE){
       q=try(nlminb(start =as.vector(beta), elbo_beta , gradient = grad_beta,lower = rep(-Inf,l), upper = rep(Inf,l),
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    phi=new.phi,pijk=new.pijk,gamma=new.gamma,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
-                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,
+                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,offset=offset,
                    sigmadi=new.sigmadi,sigmafij=new.sigmafij,num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -358,7 +359,7 @@ step_alg=function(data,trace=FALSE){
       q=try(nlminb(start =as.vector(phi), elbo_phi , gradient = grad_phi,lower = rep(-Inf,1), upper = rep(Inf,1),
                    Y=Y,x1=x1,x2=x2,v=v,w=w,lamdab=new.lamdab,lamdah=new.lamdah,lamdad=new.lamdad,lamdaf=new.lamdaf,
                    gamma=new.gamma,pijk=new.pijk,beta=new.beta,mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,
-                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,
+                   mufij=new.mufij,sigmabi=new.sigmabi,sigmahij=new.sigmahij,offset=offset,
                    sigmadi=new.sigmadi,sigmafij=new.sigmafij,num_l=num_l,num_k=num_k,l=l,k=k,control = list(trace = 0, iter.max = 100)), silent = TRUE)
       
       
@@ -393,7 +394,7 @@ step_alg=function(data,trace=FALSE){
   
     
     
-    objective =total_elbo(Y=Y,x1=x1,x2=x2,v=v,w=w,phi=new.phi,beta=new.beta,gamma=new.gamma,pijk=new.pijk,
+    objective =total_elbo(Y=Y,x1=x1,x2=x2,v=v,w=w,phi=new.phi,beta=new.beta,gamma=new.gamma,pijk=new.pijk,offset=offset,
                             mubi=new.mubi,muhij=new.muhij,mudi=new.mudi,mufij=new.mufij,lamdab=new.lamdab,lamdah=new.lamdah,
                             sigmabi=new.sigmabi,sigmahij=new.sigmahij,sigmadi=new.sigmadi,sigmafij=new.sigmafij,
                             lamdad=new.lamdad,lamdaf=new.lamdaf,num_l=num_l,num_k=num_k,l=l,k=k)
@@ -412,7 +413,7 @@ step_alg=function(data,trace=FALSE){
   
   out.list=list(Y=Y,x1=data$x1,x2=data$x2,w=w,v=v,num_l=num_l,num_k=num_k,num_p=num_p,l=l,ID=ID,cluster=cluster,
                 k=k,beta=beta,gamma=gamma,mubi=mubi,muhij=muhij,mudi=mudi,mufij=mufij,phi=phi,pijk=pijk,
-                sigmabi=sigmabi,sigmahij=sigmahij,sigmadi=sigmadi,sigmafij=sigmafij,
+                sigmabi=sigmabi,sigmahij=sigmahij,sigmadi=sigmadi,sigmafij=sigmafij,offset=offset,
                 lamdab=lamdab,lamdah=lamdah,lamdad=lamdad,lamdaf=lamdaf,loglik_all=loglik,loglik=current.loglik)
     return(out.list)
 }
