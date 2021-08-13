@@ -17,10 +17,10 @@ grad_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -57,10 +57,10 @@ grad_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -98,10 +98,10 @@ grad_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,mu
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -137,10 +137,10 @@ elbo_beta=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -171,10 +171,10 @@ elbo_gamma=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -202,10 +202,10 @@ elbo_phi=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,mu
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -241,10 +241,10 @@ total_elbo=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mubi,
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -283,10 +283,10 @@ total_elbo_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -330,10 +330,10 @@ total_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -365,10 +365,10 @@ total_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -402,10 +402,10 @@ total_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -437,10 +437,10 @@ total_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gam
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -473,10 +473,10 @@ grad_mubi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mu
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -513,10 +513,10 @@ grad_muhij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -554,10 +554,10 @@ grad_sigmabi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -593,10 +593,10 @@ grad_sigmahij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -634,10 +634,10 @@ total_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=w%*%(new.mudi)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -669,10 +669,10 @@ total_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -704,10 +704,10 @@ total_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -739,10 +739,10 @@ total_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gam
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -774,10 +774,10 @@ grad_mudi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,mu
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -810,10 +810,10 @@ grad_mufij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma,m
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -849,10 +849,10 @@ grad_sigmadi_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamma
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
@@ -887,10 +887,10 @@ grad_sigmafij_neg=function(Y,w,v,x1,x2,lamdab,lamdah,lamdad,lamdaf,phi,beta,gamm
   new.phi=phi
   
   
-  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2))
-  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2))
+  B1=(exp(x2%*%new.beta+w%*%new.mubi+w%*%(new.sigmabi^2)/2+v%*%new.muhij+v%*%(new.sigmahij^2)/2+offset))
+  C1=(exp(-x2%*%new.beta-w%*%new.mubi+w%*%(new.sigmabi^2)/2-v%*%new.muhij+v%*%(new.sigmahij^2)/2-offset))
   
-  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)
+  eq2=x2%*%new.beta+w%*%(new.mubi)+v%*%(new.muhij)+offset
   eq1=x1%*%new.gamma+w%*%(new.mudi)+v%*%(new.mufij)
   F1=(exp(x1%*%new.gamma+w%*%new.mudi+w%*%(new.sigmadi^2)/2+v%*%new.mufij+v%*%(new.sigmafij^2)/2))
   
