@@ -1,6 +1,7 @@
 #' An algrithm for variational parameters estimation of multilevel zero inflated negative binomial model
 #'
 #' @param data the multilevel data
+#' @param offset log total sequence reads
 #' @return beta the model paraeters for negative binomial
 #' @return gamma the model paraeters for logistic regression
 #' @examples
@@ -11,13 +12,13 @@
 #' sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 #' Y_mat <- sim_dat$Y_mat
 #' data <- data.frame(Y=Y_mat[,1],ID=sim_dat$ID,cluster=sim_dat$cluster,x1=sim_dat$x1,x2=sim_dat$x2)
-#' est_m <- step_alg(data)
+#' est_m <- step_alg(data,offset=NULL)
 #' @export
 
 
 
 
-step_alg=function(data,trace=FALSE){
+step_alg=function(data,trace=FALSE,offset=NULL){
   n.init=n.i=1; eps=1e-3; max.iter=100;
   current.loglik <- -1e6; iter <- 1; err <- 10; div=1e5
   cur.mubi=cur.muhij=cur.mudi=cur.mufij= -1e6
@@ -29,7 +30,8 @@ step_alg=function(data,trace=FALSE){
   x2 <- as.matrix(data.frame(1,data$x2))
   ID <- data$ID
   cluster  <- data$cluster
-  offset <- data$offset
+  if(is.null(offset)){offset <- rep(0,length(Y))}
+  else {offset <- offset}
   l <- ncol(x1)
   k <- ncol(x2)
 ########### construct w and v matrix###
