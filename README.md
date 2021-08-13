@@ -21,7 +21,7 @@ sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 * `otu.n` : the number of OTUs
 ## Parameter estimation
 ```r
-est_m <- step_alg(data) 
+est_m <- step_alg(data, offset=NULL) 
 ```
 
 ## Association analysis or differential abundance testing for each taxon
@@ -50,7 +50,7 @@ otu.n <- 100
 sim_dat <- sim.data(sub.n, pos.n, vis.n, otu.n)
 Y_mat <- sim_dat$Y_mat
 data <- data.frame(Y=Y_mat[,1],ID=sim_dat$ID,cluster=sim_dat$cluster,x1=sim_dat$x1,x2=sim_dat$x2)
-est_m <- step_alg(data)
+est_m <- step_alg(data,offset=NULL)
 res.t <- data.pro(est_m,nodes=3)
 ```
 
