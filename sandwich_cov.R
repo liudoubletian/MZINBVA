@@ -20,7 +20,7 @@
 
 
 
-total_elbo_split <- function(beta,data,gamma,phi,psib,psig,lamdab,lamdah,lamdad,lamdaf,pijk,nodes){
+total_elbo_split <- function(beta,data,gamma,phi,psib,psig,lamdab,lamdah,lamdad,lamdaf,pijk,nodes,offset){
   Y <- data$y;ID <-data$ID;cluster <-data$cluster;x1 <-data$x1;x2 <-data$x2;
   p1 <- length(unique(ID));p2 <- length(unique(cluster))
   mubi=psib[p1]
@@ -43,10 +43,10 @@ total_elbo_split <- function(beta,data,gamma,phi,psib,psig,lamdab,lamdah,lamdad,
   new.sigmadi <-  rep(sigmadi,length(ID))
   new.sigmafij <- sigmafij[cluster]
   
-  eq2=x2%*%beta+new.mubi+new.muhij
+  eq2=x2%*%beta+new.mubi+new.muhij+offset
   eq1=x1%*%gamma+new.mudi+new.mufij
-  B1=(exp(x2%*%beta+new.mubi+new.sigmabi^2/2+new.muhij+new.sigmahij^2/2))
-  C1=(exp(-x2%*%beta-new.mubi+new.sigmabi^2/2-new.muhij+new.sigmahij^2/2))
+  B1=(exp(x2%*%beta+new.mubi+new.sigmabi^2/2+new.muhij+new.sigmahij^2/2+offset))
+  C1=(exp(-x2%*%beta-new.mubi+new.sigmabi^2/2-new.muhij+new.sigmahij^2/2-offset))
   F1=(exp(x1%*%gamma+new.mudi+(new.sigmadi^2)/2+new.mufij+(new.sigmafij^2)/2))
   
   eq11=-x1%*%gamma-new.mudi-new.mufij
@@ -73,24 +73,24 @@ total_elbo_split <- function(beta,data,gamma,phi,psib,psig,lamdab,lamdah,lamdad,
 
 
 
-one_elbo_theta=function(theta,data,gamma,lamdad,lamdaf,psib,psig,pijk,nodes){
+one_elbo_theta=function(theta,data,gamma,lamdad,lamdaf,psib,psig,pijk,nodes,offset){
   Y <- data$y;ID <-data$ID;cluster <-data$cluster;x1 <-data$x1;x2 <-data$x2
   p1 <- ncol(x1);
   beta=theta[1:p1];phi=theta[(p1+1)];
   lamdab=theta[(p1+2)];lamdah=theta[(p1+3)];
-  total_elbo_split(beta=beta,phi=phi,lamdab=lamdab,lamdah=lamdah,data=data,gamma=gamma,psib=psib,psig=psig,lamdad=lamdad,lamdaf=lamdaf,pijk=pijk,nodes=nodes)
+  total_elbo_split(beta=beta,phi=phi,lamdab=lamdab,lamdah=lamdah,data=data,gamma=gamma,psib=psib,psig=psig,lamdad=lamdad,lamdaf=lamdaf,pijk=pijk,nodes=nodes,offset)
 }
 
 
 
-one_elbo_thetapsi=function(thetapsi,psig,data,pijk,gamma,lamdad,lamdaf,nodes){
+one_elbo_thetapsi=function(thetapsi,psig,data,pijk,gamma,lamdad,lamdaf,nodes,offset){
   Y <- data$y;ID <-data$ID;cluster <-data$cluster;x1 <-data$x1;x2 <-data$x2
   p1 <- ncol(x1);
   beta=thetapsi[1:p1];phi=thetapsi[(p1+1)];
   lamdab=thetapsi[(p1+2)];lamdah=thetapsi[(p1+3)];
   psib <- thetapsi[-(1:(p1+3))]
   
-  total_elbo_split(beta=beta,phi=phi,lamdab=lamdab,lamdah=lamdah,data=data,gamma=gamma,psib=psib,psig=psig,lamdad=lamdad,lamdaf=lamdaf,pijk=pijk,nodes=nodes)
+  total_elbo_split(beta=beta,phi=phi,lamdab=lamdab,lamdah=lamdah,data=data,gamma=gamma,psib=psib,psig=psig,lamdad=lamdad,lamdaf=lamdaf,pijk=pijk,nodes=nodes,offset)
 }
 
 
@@ -106,8 +106,8 @@ sandwich_cov <- function(beta,data,phi,gamma,lamdab,lamdah,lamdad,lamdaf,psib,ps
     thetapsi <- c(theta,psib=psib[[i]])
     psi_ln <- length(thetapsi)-theta_ln
     
-    grad <- grad(one_elbo_theta,theta,data=data[[i]],gamma=gamma,lamdad=lamdad,lamdaf=lamdaf,psib=psib[[i]],psig=psig[[i]],pijk=pijk[[i]],nodes=nodes)
-    hess <- hessian(one_elbo_thetapsi,thetapsi,data=data[[i]],gamma=gamma,lamdad=lamdad,lamdaf=lamdaf,psig=psig[[i]],pijk=pijk[[i]],nodes=nodes)
+    grad <- grad(one_elbo_theta,theta,data=data[[i]],gamma=gamma,lamdad=lamdad,lamdaf=lamdaf,psib=psib[[i]],psig=psig[[i]],pijk=pijk[[i]],nodes=nodes,offset=offset[[i]])
+    hess <- hessian(one_elbo_thetapsi,thetapsi,data=data[[i]],gamma=gamma,lamdad=lamdad,lamdaf=lamdaf,psig=psig[[i]],pijk=pijk[[i]],nodes=nodes,offset=offset[[i]])
     
     Ai <- hess[1:theta_ln,1:theta_ln] - hess[1:theta_ln, -(1:theta_ln)] %*% solve(hess[(theta_ln + 1):(theta_ln + psi_ln), (theta_ln + 1):(theta_ln + psi_ln)]) %*% hess[-(1:theta_ln), 1:theta_ln]
     Bi <- tcrossprod(grad) 
@@ -128,6 +128,7 @@ data.pro <- function(kk,nodes=3){
   library(MASS)
   data <- data.frame(y=kk$Y,ID=kk$ID,cluster=kk$cluster)
   N <- length(unique(data$ID))
+  offset <- kk$offset
   x1 <- as.data.frame(kk$x1)
   x2 <- as.data.frame(kk$x2)
   beta <- kk$beta; gamma <- kk$gamma; phi <- kk$phi;
@@ -148,6 +149,12 @@ data.pro <- function(kk,nodes=3){
   pijk.split <- lapply(1:N, function(j) {
     pijk[which(data$ID==uniq_id[j])]
   })
+  
+   off.split <- lapply(1:N, function(i) {
+    offset[which(data$ID==i)]
+  })
+  
+  
   
   cl.cu <- unlist(lapply(1:N, function(j) {
     sub_data <- subset(data, data$ID == uniq_id[j])
@@ -170,7 +177,7 @@ data.pro <- function(kk,nodes=3){
     len <- append(len,cl.cu[i])
   }
   
-  dd <- sandwich_cov(beta,data=data.split,phi,gamma,lamdab,lamdah,lamdad,lamdaf,psib=psib.split,psig=psig.split,pijk=pijk.split,verbose=FALSE,nodes)
+  dd <- sandwich_cov(beta,data=data.split,phi,gamma,lamdab,lamdah,lamdad,lamdaf,psib=psib.split,psig=psig.split,pijk=pijk.split,verbose=FALSE,nodes,offset=off.split))
   
   cov.inf <- dd$sand_cov[2,2]
   tes_val <- t(matrix(beta[2]))%*%ginv(cov.inf)%*%matrix(beta[2])
