@@ -94,7 +94,7 @@ one_elbo_thetapsi=function(thetapsi,psig,data,pijk,gamma,lamdad,lamdaf,nodes,off
 }
 
 
-sandwich_cov <- function(beta,data,phi,gamma,lamdab,lamdah,lamdad,lamdaf,psib,psig,pijk,verbose=FALSE,nodes) {
+sandwich_cov <- function(beta,data,phi,gamma,lamdab,lamdah,lamdad,lamdaf,psib,psig,pijk,verbose=FALSE,nodes,offset) {
   require(numDeriv)
   require(parallel)
   N <- length(data)
